@@ -1,12 +1,15 @@
 class Solution(object):
     def reverseList(self, head):
-        prev_node = None
-        current_node = head
+        prev = None
 
-        while current_node is not None:
-            next_node = current_node.next
-            current_node.next = prev_node
-            prev_node = current_node
-            current_node = next_node
+        def nodes(curr):
+            while curr:
+                nxt = curr.next
+                yield curr
+                curr = nxt
 
-        return prev_node
+        for curr in nodes(head):
+            curr.next = prev
+            prev = curr
+
+        return prev
