@@ -4,5 +4,5 @@ FROM (
     SELECT email, COUNT(email) AS cnt
     FROM Person
     GROUP BY email
-) AS flattened
+) AS s
 WHERE cnt > 1;
